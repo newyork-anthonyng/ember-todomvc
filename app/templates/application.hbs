@@ -1,5 +1,18 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-<WelcomePage />
-{{!-- Feel free to remove this! --}}
-
+<h1>todos</h1>
+<input
+    onkeydown={{action "createTodo"}}
+    placeholder="What needs to be done?"
+    autofocus
+>
 {{outlet}}
+{{#if (gt model.length 0)}}
+    <footer>
+        <span><strong>{{remaining.length}}</strong> {{pluralize 'item' remaining.length}} left</span>
+
+        <ul>
+            <li>{{#link-to "index"}}All{{/link-to}}</li>
+            <li>{{#link-to "active"}}Active{{/link-to}}</li>
+            <li>{{#link-to "completed"}}Completed{{/link-to}}</li>
+        </ul>
+    </footer>
+{{/if}}

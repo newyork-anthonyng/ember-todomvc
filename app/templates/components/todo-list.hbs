@@ -1,0 +1,18 @@
+{{#if todos.length}}
+    {{#if canToggle}}
+        <input
+            type="checkbox"
+            checked={{allCompleted}}
+            onchange={{action 'toggleAll'}}
+        >
+    {{/if}}
+    <ul>
+        {{#each todos as |todo|}}
+            {{todo-item
+                todo=todo
+                onStartEdit=(action 'disableToggle')
+                onEndEdit=(action 'enableToggle')
+            }}
+        {{/each}}
+    </ul>
+{{/if}}
